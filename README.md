@@ -8,10 +8,10 @@ Welcome to the Stock Profitability Detector, a web application for predicting th
 This project is a Flask web application that leverages historical stock price data and a logistic regression model to predict whether buying a specific stock on a given date would result in a profit or loss. The application also offers a dark mode for user preference.
 
 ## How to Run
-1. Clone this repository: `git clone https://github.com/PrernaVarshney/Stock_Trading.git`
-2. Navigate to the project directory: `cd Stock_Trading`
+1. Clone this repository: `git clone https://github.com/PrernaVarshneySophomore/Stock_Profitability_Detector.git`
+2. Navigate to the project directory: `cd Stock_Profitability_Detector`
 3. Install the required dependencies: `pip install pandas numpy yfinance scikit-learn Flask flask plotly`
-4. Run the app: `python3 app.py`
+4. Run the app: `python3 proj.py`
 5. Access the app in your web browser at `http://localhost:5000`
 
 ## Screenshots
