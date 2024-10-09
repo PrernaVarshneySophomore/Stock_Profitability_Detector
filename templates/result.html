@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Profitability Detector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: var(--background-color, white);
+            color: var(--text-color, black);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: var(--navbar-background, lightgray);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .left-corner a {
+            text-decoration: none;
+            color: var(--link-color, black);
+        }
+
+        .navbar-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .switch {
+            display: inline-block;
+            position: relative;
+            margin-left: 10px;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+        .center-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 100px;
+        }
+
+        .center-container h1 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        .center-container form {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .center-container input[type="text"],
+        .center-container input[type="date"] {
+            margin: 5px;
+            padding: 5px;
+        }
+
+        .center-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .center-container .loss {
+            color: red;
+            font-weight: bold;
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        .center-container .profit {
+            color: green;
+            font-weight: bold;
+            font-size: 24px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+    <body>
+        <nav class="navbar">
+            <div class="left-corner">
+                <a href="/">Back</a>
+            </div>
+            <div class="navbar-title">Stock Profitability Detector</div>
+            <label class="switch">
+                <input type="checkbox" id="dark-mode-toggle">
+                <span class="slider round"></span>
+            </label>
+        </nav>
+        <div class="center-container">
+            <h1>Stock Profitability Prediction Result</h1>
+            <div>{{ graph_div | safe }}</div>
+            <p class="{% if prediction == 1 %}profit{% else %}loss{% endif %}">{% if prediction == 1 %}Profit{% else %}Loss{% endif %}</p>
+        </div>
+        <script>
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+            darkModeToggle.addEventListener('change', () => {
+                const body = document.body;
+                const navbar = document.querySelector('.navbar');
+
+                if (darkModeToggle.checked) {
+                    body.style.setProperty('--background-color', 'black');
+                    body.style.setProperty('--text-color', 'white');
+                    navbar.style.setProperty('--navbar-background', 'gray');
+                } else {
+                    body.style.removeProperty('--background-color');
+                    body.style.removeProperty('--text-color');
+                    navbar.style.removeProperty('--navbar-background');
+                }
+            });
+        </script>
+    </body>
+</html>
